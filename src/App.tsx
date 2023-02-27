@@ -1,18 +1,29 @@
+import { ReactNode, useContext } from 'react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import { MainLayout } from './Layouts';
+
+import { UIContext, UIProvider } from './context/ui';
 import { darkTheme, lightTheme } from './themes';
-import { HomeScreen } from './screens/HomeScreen';
+import { Navigation } from './routes';
+
+
+const AppState = ({ children }: { children: ReactNode }) => {
+  const { theme } = useContext(UIContext);
+  return (
+    <ThemeProvider theme={(theme === 'light') ? lightTheme : darkTheme}>
+      {children}
+    </ThemeProvider>
+  )
+}
 
 const App = () => {
   return (
     <>
-      {/* <ThemeProvider theme={darkTheme}> */}
-      <ThemeProvider theme={lightTheme}>
-        <CssBaseline />
-        <MainLayout>
-          <HomeScreen />
-        </MainLayout>
-      </ThemeProvider>
+      <UIProvider>
+        <AppState>
+          <CssBaseline />
+          <Navigation />
+        </AppState>
+      </UIProvider>
     </>
   );
 }

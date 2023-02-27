@@ -1,8 +1,8 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
 import vegetables from '../assets/vegetables.svg'
-import bg from '../assets/bg.svg'
 
 export const HomeScreen = () => {
+
   return (
     <>
       <Grid
@@ -60,6 +60,8 @@ export const HomeScreen = () => {
             sx={{
               // minHeight: { sm: 'calc(100vh - 65px)', md: 'calc(100vh - 65px)', lg: 'calc(100vh - 65px)', xl: 'calc(100vh - 65px)' },
               // minWidth: '50vw',
+              // display: 'flex',
+              // justifyContent: 'center'
             }}
           >
 
@@ -69,9 +71,17 @@ export const HomeScreen = () => {
                 backgroundImage: `url(${vegetables})`,
                 backgroundSize: '100% 100%',
                 // maxHeight: { xs: '100%', sm: '100%', md: '100%', lg: 800 },
-                // maxWidth: { xs: 'calc(100vh - 65px)', sm: 'calc(100vh - 65px)', md: 'calc(100vh - 65px)', lg: 'calc(100vh - 65px)' },
-                minHeight: { xs: 400, sm: 'calc(100vh - 65px)', md: 'calc(100vh - 65px)', lg: 'calc(100vh - 65px)', xl: 'calc(100vh - 65px)' },
-                minWidth: { xs: 300 },
+
+                // color: defaultColor,
+                // backgroundColor: defaultBgcolor,
+                // ...(job.status === 'aborted' && {
+                //   color: color1,
+                //   backgroundColor: bgcolor1,
+                // }),
+                
+                maxWidth: { lg: 'calc(100vh - 65px)' },
+                minHeight: { xs: 400, sm: 'calc(100vh - 128px)', md: 'calc(100vh - 128px)', lg: 'calc(100vh - 128px)', xl: 'calc(100vh - 128px)' },
+                minWidth: { xs: 300, sm: 450 },
                 // marginBottom: { xs: 5 }
               }}
             />
@@ -81,4 +91,6 @@ export const HomeScreen = () => {
     </>
   )
 }
+
+export default HomeScreen;
 

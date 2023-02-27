@@ -8,14 +8,14 @@ export const lightTheme = createTheme({
       default: grey[300]
     },
     primary: {
-      main: '#43434387',
+      // main: '#43434387',
       // dark: '#ffffff',
-      // light: '#000000'
+      main: '#000000'
     },
     secondary: {
       main: '#90bf3b',
-      dark: '#ffffff85',
-      light: '#0000008c'
+      // dark: '#ffffff85',
+      light: '#aac17e'
     },
     text: {
       primary: "#000000"
@@ -30,9 +30,33 @@ export const lightTheme = createTheme({
       defaultProps: { elevation: 0 },
       styleOverrides: {}
     },
-    MuiButton: {
-      defaultProps: { color: 'error' },
-      // styleOverrides: {colorInherit: 'red'}
+    // MuiButton: {
+    //   defaultProps: { color: 'error' },
+    // },
+    // MuiTabs: {
+    //   defaultProps: { textColor: 'primary'}
+    // }
+    // MuiTab: {
+    //   defaultProps: {
+    //     textColor: 'green',
+    //     // backgroundColor: 'green',
+    //     '&.Mui-selected': {
+    //       background: 'red'
+    //     }
+    //   },
+    // }
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          // backgroundColor: '#1c3d04da',
+          // backgroundColor: '#42277da7',
+          backgroundColor: '#000000b6',
+          // marginTop: 125,
+          borderTopRightRadius: 10,
+          borderBottomRightRadius: 10,
+          color: 'white',
+        }
+      }
     }
   }
 });
