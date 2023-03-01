@@ -1,8 +1,9 @@
-import { CSSProperties, useContext, useState } from 'react';
+import { CSSProperties, useContext, useEffect, useLayoutEffect, useState } from 'react';
 import { AppBar, Box, IconButton, SxProps, Tab, Tabs, Theme, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { MenuOutlinedIcon, DarkModeIcon } from '../../icons'
 import { UIContext } from '../../context/ui';
-import { useNavigate } from 'react-router-dom';
+import { matchRoutes, useLocation, useNavigate } from 'react-router-dom';
+import { useCheckRoutes } from '../../hooks';
 
 // interface Props {
 //     tabStyles: CSSProperties;
@@ -18,9 +19,9 @@ const tabStyles: SxProps<Theme> = {
 export const NavBar = () => {
     const theme = useTheme();
     const { sideOpen, theme: Theme, lightTheme, darkTheme } = useContext(UIContext);
+    const navigate = useNavigate();
+    const { indexValue } = useCheckRoutes();
     const [value, setValue] = useState(0);
-    const navigate = useNavigate()
-
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
@@ -37,15 +38,22 @@ export const NavBar = () => {
     //     console.log("Abajo de SM");
     // }
 
+    useEffect(() => {
+        setValue(indexValue)
+    }, [indexValue])
+
     return (
         <AppBar position='sticky' color='transparent' sx={{ p: 4 }}>
             {/* <AppBar position='sticky' color={"primary"}> */}
             <Toolbar>
-                <IconButton size='large' edge='start'>
-                    <MenuOutlinedIcon
-                        onClick={sideOpen}
-                    />
-                </IconButton>
+                {
+                    useMediaQuery(theme.breakpoints.down("md")) &&
+                    <IconButton size='large' edge='start'>
+                        <MenuOutlinedIcon
+                            onClick={sideOpen}
+                        />
+                    </IconButton>
+                }
                 {/* <Typography variant='h6' sx={{ flexGrow: 1 }}>myOwnCookBook</Typography> */}
 
                 <Box sx={{

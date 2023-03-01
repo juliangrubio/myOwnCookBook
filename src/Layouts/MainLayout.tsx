@@ -7,6 +7,7 @@ import bg                   from '../assets/bg.svg'
 import bg_dark              from '../assets/bg_dark.svg'
 import { NavBar, SideBar }  from './ui';
 import { UIContext }        from '../context/ui/UIContext';
+import { useCheckRoutes } from '../hooks';
 
 export const MainLayout = () => {
     const { theme } = useContext(UIContext);
