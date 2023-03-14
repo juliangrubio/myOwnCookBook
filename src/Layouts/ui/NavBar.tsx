@@ -48,10 +48,8 @@ export const NavBar = () => {
             <Toolbar>
                 {
                     useMediaQuery(theme.breakpoints.down("md")) &&
-                    <IconButton size='large' edge='start'>
-                        <MenuOutlinedIcon
-                            onClick={sideOpen}
-                        />
+                    <IconButton size='large' edge='start' onClick={sideOpen}>
+                        <MenuOutlinedIcon />
                     </IconButton>
                 }
                 {/* <Typography variant='h6' sx={{ flexGrow: 1 }}>myOwnCookBook</Typography> */}
@@ -104,7 +102,7 @@ export const NavBar = () => {
                         >
                             <Tab label='Home' sx={tabStyles} onClick={() => navigate('/home')} />
                             <Tab label="Save one" sx={tabStyles} onClick={() => navigate('/saveone')} />
-                            <Tab label="Recipes" sx={tabStyles} onClick={() => navigate('/recipes')} />
+                            <Tab label="My Recipes" sx={tabStyles} onClick={() => navigate('/recipes')} />
                         </Tabs>
                     }
                 </Box>

@@ -6,6 +6,7 @@ export { default as DarkModeIcon } from '@mui/icons-material/DarkMode';
 export {default as HomeOutlinedIcon} from '@mui/icons-material/HomeOutlined';
 export {default as SaveOutlinedIcon} from '@mui/icons-material/SaveOutlined';
 export {default as MenuBookOutlinedIcon} from '@mui/icons-material/MenuBookOutlined';
+export {default as SearchIcon} from '@mui/icons-material/Search';
 
 // export {default as LunchDiningIcon} from '@mui/icons-material/LunchDining';
 // export { default as AccountCircle } from '@mui/icons-material/AccountCircle';

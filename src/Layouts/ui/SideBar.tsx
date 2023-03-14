@@ -7,7 +7,11 @@ import { HomeOutlinedIcon, SaveOutlinedIcon, MenuBookOutlinedIcon } from '../../
 import { UIContext } from '../../context/ui';
 import { useCheckRoutes } from '../../hooks';
 
-const menuItems: string[][] = [['Home', 'HomeOutlinedIcon', '/home'], ['Save one', 'SaveOutlinedIcon', '/saveone'], ['Recipes', 'MenuBookOutlinedIcon', '/recipes']]
+const menuItems: string[][] = [
+    ['Home', 'HomeOutlinedIcon', '/home'],
+    ['Save one', 'SaveOutlinedIcon', '/saveone'],
+    ['Recipes', 'MenuBookOutlinedIcon', '/recipes']
+]
 
 const componentMapping: any = {
     // Typescript infiere
