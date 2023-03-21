@@ -4,6 +4,8 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { UIContext, UIProvider } from './context/ui';
 import { darkTheme, lightTheme } from './themes';
 import { Navigation } from './routes';
+import { RecipeProviderTheMealDB } from './context/recipesTheMealDBApi';
+import { RecipeProviderMyOwnChefBookApi } from './context/recipesMyOwnChefBookApi';
 
 
 const AppState = ({ children }: { children: ReactNode }) => {
@@ -19,10 +21,14 @@ const App = () => {
   return (
     <>
       <UIProvider>
-        <AppState>
-          <CssBaseline />
-          <Navigation />
-        </AppState>
+        <RecipeProviderMyOwnChefBookApi>
+          <RecipeProviderTheMealDB>
+            <AppState>
+              <CssBaseline />
+              <Navigation />
+            </AppState>
+          </RecipeProviderTheMealDB>
+        </RecipeProviderMyOwnChefBookApi>
       </UIProvider>
     </>
   );

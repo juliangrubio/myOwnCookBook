@@ -43,7 +43,7 @@ export const NavBar = () => {
     }, [indexValue])
 
     return (
-        <AppBar position='sticky' color='transparent' sx={{ p: 4 }}>
+        <AppBar position='sticky' color='transparent' sx={{ p: 2 }}>
             {/* <AppBar position='sticky' color={"primary"}> */}
             <Toolbar>
                 {

@@ -1,25 +1,8 @@
-import { Grid, Box, Typography, Paper, Button, useMediaQuery, useTheme } from '@mui/material';
-import { useEffect, useRef, useState } from 'react';
+import { Grid, Box, Typography, Button, useMediaQuery, useTheme, CircularProgress } from '@mui/material';
+import { useEffect, useRef, useState, useContext } from 'react';
 import { CardList } from '../components';
+import { RecipeContextMyOwnChefBook } from '../context/recipesMyOwnChefBookApi';
 import { SearchIcon } from '../icons';
-import { recipesDataSet } from '../interfaces';
-// {/* <Box sx={{ height: 500, width: '100%', display: 'flex' }}> */}
-// {/* </Box> */ }
-
-const data: recipesDataSet[] = [
-  { id: 1, name: 'Bacalao', prepTime: 15, cookTime: 10, servers: 4, ingredients: ['huevo', 'caca'], preparation: '<center><h1>bacalaje: mexclar y servir</h1></center>' },
-  { id: 2, name: 'Pollo con papas fritas a la pomarola', prepTime: 30, cookTime: 30, servers: 5, ingredients: ['mortadela', 'helado'], preparation: 'servir sin cocinar' },
-  { id: 3, name: 'Pescado Frito', prepTime: 60, cookTime: 15, servers: 6, ingredients: ['cocacola', 'aserrin'], preparation: 'mexclar y abandonar 30 dias' },
-  { id: 4, name: 'Bacalao', prepTime: 15, cookTime: 10, servers: 4, ingredients: ['huevo', 'caca'], preparation: 'mexclar y servir' },
-  { id: 5, name: 'Pollo con papas fritas a la pomarola', prepTime: 30, cookTime: 30, servers: 5, ingredients: ['mortadela', 'helado'], preparation: 'servir sin cocinar' },
-  { id: 6, name: 'Pescado Frito', prepTime: 60, cookTime: 15, servers: 6, ingredients: ['cocacola', 'aserrin'], preparation: 'mexclar y abandonar 30 dias' },
-  { id: 7, name: 'Bacalao', prepTime: 15, cookTime: 10, servers: 4, ingredients: ['huevo', 'caca'], preparation: 'mexclar y servir' },
-  { id: 8, name: 'Pollo con papas fritas a la pomarola', prepTime: 30, cookTime: 30, servers: 5, ingredients: ['mortadela', 'helado'], preparation: 'servir sin cocinar' },
-  { id: 9, name: 'Pescado Frito', prepTime: 60, cookTime: 15, servers: 6, ingredients: ['cocacola', 'aserrin'], preparation: 'mexclar y abandonar 30 dias' },
-  { id: 10, name: 'Bacalao', prepTime: 15, cookTime: 10, servers: 4, ingredients: ['huevo', 'caca'], preparation: 'mexclar y servir' },
-  { id: 11, name: 'Pollo con papas fritas a la pomarola', prepTime: 30, cookTime: 30, servers: 5, ingredients: ['mortadela', 'helado'], preparation: 'servir sin cocinar' },
-  { id: 12, name: 'Pescado Frito', prepTime: 60, cookTime: 15, servers: 6, ingredients: ['cocacola', 'aserrin'], preparation: 'mexclar y abandonar 30 dias' },
-]
 
 // const flashAnimation = {
 //   '0%': {
@@ -50,6 +33,7 @@ export const RecipesScreen = () => {
   const boxToPreviewRef = useRef<HTMLDivElement>(null);
   const [someHTML, setSomeHTML] = useState('');
   const [isBlinking, setIsBlinking] = useState(false);
+  const { recetas } = useContext(RecipeContextMyOwnChefBook);
 
   const toggleBlink = () => {
     setIsBlinking((prev) => !prev);
@@ -85,6 +69,7 @@ export const RecipesScreen = () => {
       boxToPreviewRef.current.innerHTML = someHTML;
     }
   }, [someHTML]);
+
   return (
     <>
       <Grid container flexDirection={'row'} sx={{
@@ -104,10 +89,16 @@ export const RecipesScreen = () => {
           }}>
 
             <Grid item sx={{ overflow: 'hidden' }}>
-              <CardList
-                handleChangeValueRecipe={handleChangeValueRecipePreview}
-                data={data}
-              />
+              {
+                (recetas.length !== 0)
+                  ? <CardList
+                    handleChangeValueRecipe={handleChangeValueRecipePreview}
+                    data={recetas}
+                  />
+                  : <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <CircularProgress />
+                  </Box>
+              }
             </Grid>
 
             <Grid item sx={{
@@ -117,7 +108,7 @@ export const RecipesScreen = () => {
             }}>
 
               <Typography align="center" sx={{
-                animation: isBlinking ? 'blink 1s infinite' : 'none',
+                animation: isBlinking ? 'blink 1.5s infinite' : 'none',
                 '@keyframes blink': flashAnimation
               }}>
                 I don't know what I can eat, help!!

@@ -1,22 +1,20 @@
 import { Box, Typography } from "@mui/material"
+import { Receta } from "../interfaces";
 
 interface Props {
-    id: number;
-    name: string;
-    prep: string;
+    data: Receta;
     handleChangeValueRecipePreview: (value: string) => void;
 }
 
-export const Card = ({ 
-    id, 
-    name, 
-    prep, 
-    handleChangeValueRecipePreview 
+export const Card = ({
+    data,
+    handleChangeValueRecipePreview
 }: Props) => {
+    const { title, preparation } = data;
 
     return (
         <Box
-            onClick={() => handleChangeValueRecipePreview(prep)}
+            onClick={() => handleChangeValueRecipePreview(preparation)}
             // onClick={() => handleChangeValueRecipePreview('<h1>jajajeeeeeeeeee</h1>')}
             // onClick={() => handleChangeValueRecipePreview('jjjjjjjjjjjjjjjj')}
             sx={{
@@ -28,12 +26,12 @@ export const Card = ({
                 borderRadius: 3,
                 my: 1,
                 mx: 1,
-                px:2,
+                px: 2,
             }}>
             <Box sx={{ p: 1 }}>
 
-                <Typography sx={{fontWeight: 'bold'}} noWrap>
-                    {name}
+                <Typography sx={{ fontWeight: 'bold' }} noWrap>
+                    {title}
                 </Typography>
 
             </Box>

@@ -1,4 +1,4 @@
-import { FC, ReactNode, useContext, useReducer } from 'react';
+import { ReactNode, useContext, useReducer } from 'react';
 import { UIContext, uiReducer, UIState } from './';
 
 const UI_INITIAL_STATE: UIState = {

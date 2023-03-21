@@ -1,16 +1,16 @@
 const toolbar: any = [
-    [{ size: ['small', false, 'large', 'huge'] }],
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    ['bold', 'italic', 'underline', 'strike'],
-    [{ align: [] }],
+  [{ size: ["small", false, "large", "huge"] }],
+  [{ header: [1, 2, 3, 4, 5, 6, false] }],
+  ["bold", "italic", "underline", "strike"],
+  [{ align: [] }],
 
-    [{ list: 'ordered' }, { list: 'bullet' }],
-    // [{ indent: '-1' }, { indent: '+1' }],
+  [{ list: "ordered" }, { list: "bullet" }],
+  // [{ indent: '-1' }, { indent: '+1' }],
 
-    ['link', 'image'],
-    [{ color: [] }, { background: [] }],
+  ["link", "image"],
+  [{ color: [] }, { background: [] }],
 
-    ['clean']
-]
+  //   ["clean"],
+];
 
 export default toolbar;
